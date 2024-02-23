@@ -1,15 +1,16 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
-import aaa from './components/aaa.vue';
-import MqttDemo from './components/MqttDemo.vue'
+
+
 </script>
 
 <template>
-  <!-- <aaa></aaa> -->
-  <HelloWorld></HelloWorld>
-  <!-- <MqttDemo></MqttDemo> -->
+  <keep-alive>
+    <router-view v-slot="{ Component, route }">
+      <transition :name="route.meta.transition">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </keep-alive>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

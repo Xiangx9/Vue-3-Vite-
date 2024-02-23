@@ -7,7 +7,7 @@ axios.defaults.timeout = 60000;
 
 // 请求地址，这里是动态赋值的的环境变量，下一篇会细讲，这里跳过
 // @ts-ignore
-axios.defaults.baseURL = "https://testoxygen.o2maker.com/api";
+axios.defaults.baseURL = "";
 
 //http request 拦截器
 axios.interceptors.request.use(
@@ -56,6 +56,17 @@ export function request(url = "", params = {}, type = "POST") {
         method: "POST",
         url,
         data: params,
+      });
+    }else if (type.toUpperCase() === "PUT") {
+      promise = axios({
+        method: "PUT",
+        url,
+        data: params,
+      });
+    }else if (type.toUpperCase() === "DEIETE") {
+      promise = axios({
+        url,
+        params,
       });
     }
     //处理返回
