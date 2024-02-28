@@ -1,7 +1,10 @@
 import { request } from './axios'
-export class Login {       // 登录模块
+export class Logins {       // 登录模块
     static async register(params) {  
         return request('/api/users/register',params, 'post')
+    }
+    static async login(params) {  
+        return request('/api/users/login',params, 'post')
     }
 }
 
