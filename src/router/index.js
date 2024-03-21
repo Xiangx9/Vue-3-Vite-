@@ -1,11 +1,27 @@
-import {createWebHashHistory, createWebHistory, createRouter } from "vue-router"; //导入路由系列：
- 
+import {
+  createWebHashHistory,
+  createWebHistory,
+  createRouter,
+} from "vue-router"; //导入路由系列：
+
 const routes = [
   {
     // 页面逻辑
     path: "/", //路由分配的 URL
     name: "home", //当路由指向此页面时显示的名字
     component: () => import("@/views/home/index.vue"), //路由调用这个页面时加载的组件名
+  }, {
+    path: "/Parent",
+    name: "Parent",
+    component: () => import("@/views/Parent/index.vue"),
+  }, {
+    path: "/Child",
+    name: "Child",
+    component: () => import("@/views/Child/index.vue"),
+  },{
+    path: '/:error*',
+    name: "404",
+    component: () => import("@/views/404.vue"),
   },
 ];
 
@@ -14,13 +30,14 @@ const router = createRouter({
   // history: createWebHashHistory(), //hash模式
   history: createWebHistory(), //History模式
   routes, //路由路径
-  scrollBehavior(to, from, savedPosition) { //滚动行为
+  scrollBehavior(to, from, savedPosition) {
+    //滚动行为
     // 滚动到锚点
     if (to.hash) {
       return {
         el: to.hash,
-        behavior: 'smooth',
-      }
+        behavior: "smooth",
+      };
     }
   },
 });
@@ -34,9 +51,9 @@ const router = createRouter({
 
 // 全局后置钩子
 router.afterEach((to, from) => {
-  const toDepth = to.path.split('/').length
-  const fromDepth = from.path.split('/').length
-  to.meta.transition = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-})
+  const toDepth = to.path.split("/").length;
+  const fromDepth = from.path.split("/").length;
+  to.meta.transition = toDepth < fromDepth ? "slide-right" : "slide-left";
+});
 
 export default router;

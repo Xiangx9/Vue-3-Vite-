@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 const tokenStore = defineStore("tokenId", {
   state: () => {
     return {
-        token: 1,
+        token: '123',
     };
   },
   getters: {

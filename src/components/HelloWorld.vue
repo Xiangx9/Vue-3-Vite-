@@ -1,5 +1,5 @@
 <template>
-  123
+  HelloWorld
 </template>
 <script setup>
 import { onMounted } from 'vue'

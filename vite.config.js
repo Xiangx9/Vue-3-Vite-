@@ -5,7 +5,7 @@ import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import vue from "@vitejs/plugin-vue";
-import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
+// import { VueHooksPlusResolver } from '@vue-hooks-plus/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -16,7 +16,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       dts: 'src/auto-imports.d.ts',
-      resolvers: [VueHooksPlusResolver()],
+      // resolvers: [VueHooksPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],
